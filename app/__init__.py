@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask, render_template
-from . import db
+from . import db, auth
 
 
 def create_app(test_config=None):
@@ -30,5 +30,7 @@ def create_app(test_config=None):
         render_template('home.html')
 
     db.init_app(app)
+    
+    app.register_blueprint(auth.bp)
 
     return app
