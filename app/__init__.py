@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, render_template
+from . import db
 
 
 def create_app(test_config=None):
@@ -28,7 +29,6 @@ def create_app(test_config=None):
     def home():
         render_template('home.html')
 
-    from . import db
     db.init_app(app)
 
     return app
